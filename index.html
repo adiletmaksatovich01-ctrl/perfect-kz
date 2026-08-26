@@ -57,6 +57,8 @@
             border-radius: 6px;
             transition: 0.3s;
             margin: 10px 5px;
+            border: none;
+            cursor: pointer;
         }
 
         .btn:hover {
@@ -130,6 +132,17 @@
             color: var(--primary);
             user-select: all;
             margin: 15px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn-copy {
+            padding: 8px 18px;
+            font-size: 0.9rem;
+            margin: 0;
         }
 
         ol {
@@ -138,6 +151,17 @@
 
         ol li {
             margin-bottom: 10px;
+        }
+
+        /* Беттегі белсенді сілтемелер стилі */
+        .link-url {
+            color: var(--primary);
+            text-decoration: underline;
+            word-break: break-all;
+        }
+
+        .link-url:hover {
+            color: #f39c12;
         }
     </style>
 </head>
@@ -193,7 +217,10 @@
         </div>
         <div class="info-card">
             <p style="text-align: center;">МТА клиентін ашып, келесі IP мекенжайды енгізіңіз:</p>
-            <div class="ip-box">mtasa://87.228.5.7:22003</div>
+            <div class="ip-box">
+                <span id="server-ip">mtasa://87.228.5.7:22003</span>
+                <button class="btn btn-copy" id="copy-btn" onclick="copyIP()">Копировать</button>
+            </div>
         </div>
 
         <!-- MTA жүктеу нұсқаулығы -->
@@ -202,11 +229,12 @@
         </div>
         <div class="info-card">
             <ol>
-                <li>Компьютеріңізге таза <strong>GTA San Andreas</strong> ойынын орнатыңыз (https://disk.yandex.kz/d/ydf5ZKAhb8v4Gg)</li>
-                <li>Официалды сайттан <strong>Multi Theft Auto (MTA:SA)</strong> клиентін жүктеңіз (https://multitheftauto.com).</li>
+                <li>Компьютеріңізге таза <strong>GTA San Andreas</strong> ойынын орнатыңыз (<a href="https://disk.yandex.kz/d/ydf5ZKAhb8v4Gg" target="_blank" class="link-url">https://disk.yandex.kz/d/ydf5ZKAhb8v4Gg</a>)</li>
+                <li>Официалды сайттан <strong>Multi Theft Auto (MTA:SA)</strong> клиентін жүктеңіз (<a href="https://multitheftauto.com" target="_blank" class="link-url">https://multitheftauto.com</a>).</li>
                 <li>MTA орнату барысында GTA San Andreas папкасын көрсетіңіз.</li>
                 <li>МТА-ны ашып Настройка-Интерфейс бөліміне өтіп жазуды Руский дегенге ауыстырыңыз.</li>
                 <li>MTA-ны ашып, <strong>Список серверов</strong> бөлімін басып, төбеге осы IP-ді жазып, <strong>Подключиться</strong> батырмасын басып серверге кіресіз.</li>
+            </ol>
         </div>
 
         <!-- Сервер туралы -->
@@ -218,6 +246,22 @@
         </div>
 
     </div>
+
+    <script>
+        function copyIP() {
+            var ipText = document.getElementById("server-ip").innerText;
+            var btn = document.getElementById("copy-btn");
+            
+            navigator.clipboard.writeText(ipText).then(function() {
+                btn.innerText = "Скопировано!";
+                btn.style.background = "#2ed573";
+                setTimeout(function() {
+                    btn.innerText = "Копировать";
+                    btn.style.background = "var(--primary)";
+                }, 2000);
+            });
+        }
+    </script>
 
 </body>
 </html>
