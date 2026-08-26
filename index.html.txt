@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfect Kazakhstan | RPG</title>
+    <style>
+        :root {
+            --primary: #e67e22;
+            --bg-dark: #0f1015;
+            --card-bg: #1a1c23;
+            --text: #ffffff;
+            --text-dim: #a0a5b5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text);
+            line-height: 1.6;
+            padding-bottom: 50px;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(180deg, rgba(230,126,34,0.2) 0%, rgba(15,16,21,1) 100%);
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--primary);
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 6px;
+            transition: 0.3s;
+            margin: 10px 5px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(230, 126, 34, 0.4);
+        }
+
+        .btn-tg { background: #24A1DE; }
+        .btn-tg:hover { box-shadow: 0 5px 15px rgba(36, 161, 222, 0.4); }
+
+        .section-title {
+            text-align: center;
+            margin: 40px 0 20px;
+            font-size: 1.8rem;
+            border-bottom: 2px solid var(--primary);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        .center-wrapper {
+            text-align: center;
+        }
+
+        /* Сервер Әкімшілігі / С құрамы */
+        .hierarchy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .role-card {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            border-left: 4px solid var(--primary);
+        }
+
+        .role-title {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+        }
+
+        .role-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #fff;
+            margin-top: 5px;
+        }
+
+        .owner { border-color: #ff4757; }
+        .owner .role-name { color: #ff4757; }
+
+        /* Тақталар мен Ақпарат */
+        .info-card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .ip-box {
+            background: #111217;
+            padding: 15px;
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 1.2rem;
+            text-align: center;
+            color: var(--primary);
+            user-select: all;
+            margin: 15px 0;
+        }
+
+        ol {
+            margin-left: 20px;
+        }
+
+        ol li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Perfect Kazakhstan | RPG</h1>
+        <p>Қазақстандағы ең қызықты MTA RolePlay/RPG серверлерінің бірі!</p>
+        
+        <div style="margin-top: 20px;">
+            <a href="https://t.me/YOUR_TELEGRAM_CHANNEL" target="_blank" class="btn btn-tg">Telegram Канал</a>
+            <a href="https://t.me/YOUR_TELEGRAM_CHAT" target="_blank" class="btn btn-tg">Telegram Беседа</a>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <!-- Сервер Кураторлары мен Әкімшілігі -->
+        <div class="center-wrapper">
+            <h2 class="section-title">Сервер Басшылығы</h2>
+        </div>
+        
+        <div class="hierarchy-grid">
+            <div class="role-card owner">
+                <div class="role-title">Владелец</div>
+                <div class="role-name">BAURIGO</div>
+            </div>
+            <div class="role-card">
+                <div class="role-title">Руководство</div>
+                <div class="role-name">Ник / Аты</div>
+            </div>
+            <div class="role-card">
+                <div class="role-title">Медиа Куратор</div>
+                <div class="role-name">Ник / Аты</div>
+            </div>
+            <div class="role-card">
+                <div class="role-title">Главный Админ</div>
+                <div class="role-name">Ник / Аты</div>
+            </div>
+            <div class="role-card">
+                <div class="role-title">Старший Админ</div>
+                <div class="role-name">Ник / Аты</div>
+            </div>
+            <div class="role-card">
+                <div class="role-title">Смотрящий</div>
+                <div class="role-name">Ник / Аты</div>
+            </div>
+        </div>
+
+        <!-- Серверге қосылу IP -->
+        <div class="center-wrapper">
+            <h2 class="section-title">Серверке қосылу</h2>
+        </div>
+        <div class="info-card">
+            <p style="text-align: center;">МТА клиентін ашып, келесі IP мекенжайды енгізіңіз:</p>
+            <div class="ip-box">mtasa://СЕРВЕР_ИП:ПОРТ</div>
+        </div>
+
+        <!-- MTA жүктеу нұсқаулығы -->
+        <div class="center-wrapper">
+            <h2 class="section-title">Ойынды қалай жүктеуге болады?</h2>
+        </div>
+        <div class="info-card">
+            <ol>
+                <li>Компьютеріңізге таза <strong>GTA San Andreas</strong> (оригинал) ойынын орнатыңыз.</li>
+                <li>Официалды сайттан <strong>Multi Theft Auto (MTA:SA)</strong> клиентін жүктеңіз (mtasa.com).</li>
+                <li>MTA орнату барысында GTA San Andreas папкасын көрсетіңіз.</li>
+                <li>MTA-ны ашып, <strong>Quick Connect (Быстрое подключение)</strong> бөліміне жоғарыда көрсетілген IP мекенжайды жазып, серверге кіріңіз!</li>
+            </ol>
+        </div>
+
+        <!-- Сервер туралы -->
+        <div class="center-wrapper">
+            <h2 class="section-title">Сервер туралы</h2>
+        </div>
+        <div class="info-card">
+            <p><strong>Perfect Kazakhstan | RPG</strong> — бұл бірегей автокөліктер, қазақстандық атмосфера, дамыған жұмыс жүйесі және шынайы RolePlay ортасы бар сервер. Өзіңізге ұнайтын жумысқа орналасып, үй мен көлік сатып алыңыз, фракцияларға кіріңіз немесе өз бизнес империяңызды құрыңыз!</p>
+        </div>
+
+    </div>
+
+</body>
+</html>
