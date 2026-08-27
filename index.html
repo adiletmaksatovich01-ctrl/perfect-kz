@@ -8,8 +8,7 @@
         :root {
             --primary: #2563eb; /* Көк түс */
             --primary-hover: #1d4ed8;
-            --bg-dark: #0a0c10;
-            --card-bg: #121620;
+            --card-bg: rgba(18, 22, 32, 0.85); /* Фон көрініп тұру үшін шамалы мөлдір */
             --text: #ffffff;
             --text-dim: #94a3b8;
         }
@@ -22,24 +21,68 @@
         }
 
         body {
-            background-color: var(--bg-dark);
+            background-color: #050811;
             color: var(--text);
             line-height: 1.5;
             padding-bottom: 30px;
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
         }
+
+        /* --- Көк жұлдыздар ағып тұратн анимация фоны --- */
+        .stars-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            background: radial-gradient(ellipse at bottom, #090d19 0%, #020408 100%);
+        }
+
+        .star {
+            position: absolute;
+            background: #3b82f6;
+            border-radius: 50%;
+            animation: fall linear infinite;
+            box-shadow: 0 0 8px #3b82f6, 0 0 15px #60a5fa;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-10vh) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(110vh) translateX(-50px);
+                opacity: 0;
+            }
+        }
+        /* --------------------------------------------- */
 
         header {
             text-align: center;
             padding: 35px 15px;
-            background: linear-gradient(180deg, rgba(37,99,235,0.15) 0%, rgba(10,12,16,1) 100%);
+            background: rgba(37, 99, 235, 0.08);
+            backdrop-filter: blur(5px);
+            border-bottom: 1px solid rgba(37, 99, 235, 0.2);
         }
 
         h1 {
             font-size: 2.2rem;
-            color: var(--primary);
+            color: #60a5fa;
             text-transform: uppercase;
             letter-spacing: 1px;
             margin-bottom: 5px;
+            text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
         }
 
         header p {
@@ -51,6 +94,8 @@
             max-width: 850px;
             margin: 0 auto;
             padding: 0 15px;
+            position: relative;
+            z-index: 1;
         }
 
         .btn {
@@ -71,19 +116,20 @@
         .btn:hover {
             background: var(--primary-hover);
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.5);
         }
 
         .btn-tg { background: #24A1DE; }
-        .btn-tg:hover { background: #1b85b8; box-shadow: 0 4px 12px rgba(36, 161, 222, 0.3); }
+        .btn-tg:hover { background: #1b85b8; box-shadow: 0 4px 15px rgba(36, 161, 222, 0.5); }
 
         .btn-discord { background: #5865F2; }
-        .btn-discord:hover { background: #4752C4; box-shadow: 0 4px 12px rgba(88, 101, 242, 0.3); }
+        .btn-discord:hover { background: #4752C4; box-shadow: 0 4px 15px rgba(88, 101, 242, 0.5); }
 
         .section-title {
             text-align: center;
             margin: 25px 0 15px;
             font-size: 1.4rem;
+            color: #60a5fa;
             border-bottom: 2px solid var(--primary);
             display: inline-block;
             padding-bottom: 3px;
@@ -103,9 +149,11 @@
 
         .role-card {
             background: var(--card-bg);
+            backdrop-filter: blur(10px);
             padding: 12px 15px;
             border-radius: 6px;
             text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
             border-left: 3px solid var(--primary);
         }
 
@@ -128,20 +176,22 @@
         /* Тақталар мен Ақпарат */
         .info-card {
             background: var(--card-bg);
+            backdrop-filter: blur(10px);
             padding: 18px;
             border-radius: 6px;
             margin-bottom: 15px;
             font-size: 0.95rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .ip-box {
-            background: #07090c;
+            background: rgba(5, 8, 17, 0.8);
             padding: 12px;
             border-radius: 5px;
             font-family: monospace;
             font-size: 1.1rem;
             text-align: center;
-            color: var(--primary);
+            color: #60a5fa;
             user-select: all;
             margin: 10px 0;
             display: flex;
@@ -149,6 +199,7 @@
             justify-content: center;
             gap: 12px;
             flex-wrap: wrap;
+            border: 1px solid rgba(37, 99, 235, 0.3);
         }
 
         .btn-copy {
@@ -166,17 +217,20 @@
         }
 
         .link-url {
-            color: var(--primary);
+            color: #60a5fa;
             text-decoration: underline;
             word-break: break-all;
         }
 
         .link-url:hover {
-            color: #60a5fa;
+            color: #93c5fd;
         }
     </style>
 </head>
 <body>
+
+    <!-- Ағып тұрған жұлдыздарға арналған блок -->
+    <div class="stars-bg" id="starsContainer"></div>
 
     <header>
         <h1>Perfect Kazakhstan | RPG</h1>
@@ -260,6 +314,30 @@
     </div>
 
     <script>
+        // Жұлдыздарды автоматты түрде генерациялау скрипті
+        const starsContainer = document.getElementById('starsContainer');
+        const starsCount = 50; // Жұлдыздар саны
+
+        for (let i = 0; i < starsCount; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            
+            // Кездейсоқ өлшем, орын және жылдамдық беру
+            const size = Math.random() * 3 + 1; // 1px - 4px аралығында
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+            star.style.left = `${Math.random() * 100}vw`;
+            star.style.top = `${Math.random() * -100}vh`;
+            
+            const duration = Math.random() * 3 + 2; // 2 секундтан 5 секундқа дейін ағу жылдамдығы
+            const delay = Math.random() * 5; // Әр түрлі уақытта түсуі үшін кідіріс
+            
+            star.style.animationDuration = `${duration}s`;
+            star.style.animationDelay = `${delay}s`;
+            
+            starsContainer.appendChild(star);
+        }
+
         function copyIP() {
             var ipText = document.getElementById("server-ip").innerText;
             var btn = document.getElementById("copy-btn");
