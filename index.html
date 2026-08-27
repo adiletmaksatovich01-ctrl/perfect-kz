@@ -3,16 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfect Kazakhstan | RPG</title>
+    <title>PERFECT KAZAKHSTAN | RPG - MTA Server</title>
     <style>
-        :root {
-            --primary: #e67e22;
-            --bg-dark: #0f1015;
-            --card-bg: #1a1c23;
-            --text: #ffffff;
-            --text-dim: #a0a5b5;
-        }
-
         * {
             margin: 0;
             padding: 0;
@@ -21,247 +13,253 @@
         }
 
         body {
-            background-color: var(--bg-dark);
-            color: var(--text);
-            line-height: 1.6;
-            padding-bottom: 50px;
+            background-color: #0d0b0a;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
+        /* Навигация (Шапка) */
         header {
-            text-align: center;
-            padding: 60px 20px;
-            background: linear-gradient(180deg, rgba(230,126,34,0.2) 0%, rgba(15,16,21,1) 100%);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: rgba(18, 14, 12, 0.95);
+            border-bottom: 1px solid #2a221d;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
-        h1 {
-            font-size: 2.8rem;
-            color: var(--primary);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background: var(--primary);
-            color: #fff;
-            text-decoration: none;
+        .logo {
+            font-size: 20px;
             font-weight: bold;
-            border-radius: 6px;
-            transition: 0.3s;
-            margin: 10px 5px;
-            border: none;
-            cursor: pointer;
+            color: #f38221;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #ffffff;
+        }
+
+        nav a {
+            color: #ccc;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #f38221;
+        }
+
+        /* Главный баннер (Hero Section) */
+        .hero {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 100px 20px;
+            background: radial-gradient(circle at center, #2e2118 0%, #0d0b0a 70%);
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            color: #f38221;
+            text-transform: uppercase;
+        }
+
+        .hero h1 span {
+            color: #ffffff;
+            border-left: 3px solid #f38221;
+            padding-left: 15px;
+            margin-left: 10px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #d1d1d1;
+            max-width: 600px;
+            margin-bottom: 35px;
+            line-height: 1.5;
+        }
+
+        /* Батырмалар блока */
+        .buttons-container {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        /* Батырмалар стилі */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #ffffff;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
         }
 
         .btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(230, 126, 34, 0.4);
         }
 
-        .btn-tg { background: #24A1DE; }
-        .btn-tg:hover { box-shadow: 0 5px 15px rgba(36, 161, 222, 0.4); }
-
-        .section-title {
-            text-align: center;
-            margin: 40px 0 20px;
-            font-size: 1.8rem;
-            border-bottom: 2px solid var(--primary);
-            display: inline-block;
-            padding-bottom: 5px;
+        .btn-tg-channel {
+            background-color: #2ea7e1;
+        }
+        .btn-tg-channel:hover {
+            background-color: #2595cb;
         }
 
-        .center-wrapper {
-            text-align: center;
+        .btn-tg-bot {
+            background-color: #179cde;
+        }
+        .btn-tg-bot:hover {
+            background-color: #1282b8;
         }
 
-        /* Сервер Әкімшілігі / С құрамы */
-        .hierarchy-grid {
+        .btn-discord {
+            background-color: #5865F2;
+        }
+        .btn-discord:hover {
+            background-color: #4752C4;
+        }
+
+        /* Ақпараттық блоктар */
+        .features {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 1100px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 60px 20px;
         }
 
-        .role-card {
-            background: var(--card-bg);
-            padding: 20px;
-            border-radius: 8px;
+        .card {
+            background: #161210;
+            border: 1px solid #2a221d;
+            border-radius: 10px;
+            padding: 30px;
             text-align: center;
-            border-left: 4px solid var(--primary);
+            transition: border-color 0.3s;
         }
 
-        .role-title {
-            font-size: 0.9rem;
-            color: var(--text-dim);
-            text-transform: uppercase;
+        .card:hover {
+            border-color: #f38221;
         }
 
-        .role-name {
-            font-size: 1.3rem;
-            font-weight: bold;
-            color: #fff;
-            margin-top: 5px;
+        .card h3 {
+            color: #f38221;
+            font-size: 22px;
+            margin-bottom: 12px;
         }
 
-        .owner { border-color: #ff4757; }
-        .owner .role-name { color: #ff4757; }
+        .card p {
+            color: #a0a0a0;
+            font-size: 15px;
+            line-height: 1.6;
+        }
 
-        /* Тақталар мен Ақпарат */
-        .info-card {
-            background: var(--card-bg);
+        /* Подвал (Footer) */
+        footer {
+            text-align: center;
             padding: 25px;
-            border-radius: 8px;
-            margin-bottom: 20px;
+            background-color: #080706;
+            border-top: 1px solid #1c1714;
+            color: #666;
+            font-size: 14px;
         }
 
-        .ip-box {
-            background: #111217;
-            padding: 15px;
-            border-radius: 6px;
-            font-family: monospace;
-            font-size: 1.2rem;
-            text-align: center;
-            color: var(--primary);
-            user-select: all;
-            margin: 15px 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .btn-copy {
-            padding: 8px 18px;
-            font-size: 0.9rem;
-            margin: 0;
-        }
-
-        ol {
-            margin-left: 20px;
-        }
-
-        ol li {
-            margin-bottom: 10px;
-        }
-
-        /* Беттегі белсенді сілтемелер стилі */
-        .link-url {
-            color: var(--primary);
-            text-decoration: underline;
-            word-break: break-all;
-        }
-
-        .link-url:hover {
-            color: #f39c12;
+        /* Адаптив */
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 20px;
+                flex-direction: column;
+                gap: 15px;
+            }
+            .hero h1 {
+                font-size: 32px;
+            }
+            .hero h1 span {
+                display: block;
+                border-left: none;
+                padding-left: 0;
+                margin-left: 0;
+                margin-top: 5px;
+            }
         }
     </style>
 </head>
 <body>
 
+    <!-- Шапка -->
     <header>
-        <h1>Perfect Kazakhstan | RPG</h1>
-        <p>Қазақстандағы ең мықты және қызықты MTA RPG серверлерінің бірі!</p>
-        
-        <div style="margin-top: 20px;">
-            <a href="https://t.me/+8u15Xui4Va4wZjJi" target="_blank" class="btn btn-tg">Telegram Канал</a>
-            <a href="https://t.me/PerfectRPG_bot" target="_blank" class="btn btn-tg">Telegram bot</a>
-        </div>
+        <div class="logo">PERFECT <span>RPG</span></div>
+        <nav>
+            <a href="#about">Сервер туралы</a>
+            <a href="#connect">Қосылу</a>
+            <a href="https://t.me/PerfectRPG_bot" target="_blank">Telegram Бот</a>
+        </nav>
     </header>
 
-    <div class="container">
-
-        <!-- Сервер Кураторлары мен Әкімшілігі -->
-        <div class="center-wrapper">
-            <h2 class="section-title">Сервер Басшылығы</h2>
-        </div>
+    <!-- Баннер -->
+    <section class="hero">
+        <h1>PERFECT KAZAKHSTAN <span>RPG</span></h1>
+        <p>Қазақстандағы ең мықты және қызықты MTA RPG серверлерінің бірі!</p>
         
-        <div class="hierarchy-grid">
-            <div class="role-card owner">
-                <div class="role-title">Владелец</div>
-                <div class="role-name">BAURIGO</div>
-            </div>
-            <div class="role-card">
-                <div class="role-title">Руководство</div>
-                <div class="role-name">Ник / Аты</div>
-            </div>
-            <div class="role-card">
-                <div class="role-title">Медиа Куратор</div>
-                <div class="role-name">Ник / Аты</div>
-            </div>
-            <div class="role-card">
-                <div class="role-title">Главный Админ</div>
-                <div class="role-name">Ник / Аты</div>
-            </div>
-            <div class="role-card">
-                <div class="role-title">Старший Админ</div>
-                <div class="role-name">Ник / Аты</div>
-            </div>
-            <div class="role-card">
-                <div class="role-title">Смотрящий</div>
-                <div class="role-name">Ник / Аты</div>
-            </div>
-        </div>
-
-        <!-- Серверге қосылу IP -->
-        <div class="center-wrapper">
-            <h2 class="section-title">Серверке қосылу</h2>
-        </div>
-        <div class="info-card">
-            <p style="text-align: center;">МТА клиентін ашып, келесі IP мекенжайды енгізіңіз:</p>
-            <div class="ip-box">
-                <span id="server-ip">mtasa://87.228.5.7:22003</span>
-                <button class="btn btn-copy" id="copy-btn" onclick="copyIP()">Копировать</button>
-            </div>
-        </div>
-
-        <!-- MTA жүктеу нұсқаулығы -->
-        <div class="center-wrapper">
-            <h2 class="section-title">Ойынды қалай жүктеуге болады?</h2>
-        </div>
-        <div class="info-card">
-            <ol>
-                <li>Компьютеріңізге таза <strong>GTA San Andreas</strong> ойынын орнатыңыз (<a href="https://disk.yandex.kz/d/ydf5ZKAhb8v4Gg" target="_blank" class="link-url">https://disk.yandex.kz/d/ydf5ZKAhb8v4Gg</a>)</li>
-                <li>Официалды сайттан <strong>Multi Theft Auto (MTA:SA)</strong> клиентін жүктеңіз (<a href="https://multitheftauto.com" target="_blank" class="link-url">https://multitheftauto.com</a>).</li>
-                <li>MTA орнату барысында GTA San Andreas папкасын көрсетіңіз.</li>
-                <li>МТА-ны ашып Настройка-Интерфейс бөліміне өтіп жазуды Руский дегенге ауыстырыңыз.</li>
-                <li>MTA-ны ашып, <strong>Список серверов</strong> бөлімін басып, төбеге осы IP-ді жазып, <strong>Подключиться</strong> батырмасын басып серверге кіресіз.</li>
-            </ol>
-        </div>
-
-        <!-- Сервер туралы -->
-        <div class="center-wrapper">
-            <h2 class="section-title">Сервер туралы</h2>
-        </div>
-        <div class="info-card">
-            <p><strong>Perfect Kazakhstan | RPG</strong> — бұл бірегей автокөліктер, қазақстандық атмосфера, дамыған жұмыс жүйесі және шынайы RolePlay ортасы бар сервер. Өзіңізге ұнайтын жумысқа орналасып, үй мен көлік сатып алыңыз, фракцияларға кіріңіз немесе өз бизнес империяңызды құрыңыз!</p>
-        </div>
-
-    </div>
-
-    <script>
-        function copyIP() {
-            var ipText = document.getElementById("server-ip").innerText;
-            var btn = document.getElementById("copy-btn");
+        <!-- Батырмалар тізімі -->
+        <div class="buttons-container">
+            <a href="https://t.me/сіздің_канал_аты" target="_blank" class="btn btn-tg-channel">
+                Telegram Канал
+            </a>
             
-            navigator.clipboard.writeText(ipText).then(function() {
-                btn.innerText = "Скопировано!";
-                btn.style.background = "#2ed573";
-                setTimeout(function() {
-                    btn.innerText = "Копировать";
-                    btn.style.background = "var(--primary)";
-                }, 2000);
-            });
-        }
-    </script>
+            <a href="https://t.me/PerfectRPG_bot" target="_blank" class="btn btn-tg-bot">
+                Telegram Bot
+            </a>
+
+            <!-- Discord Сервер сілтемесі қосылды -->
+            <a href="https://discord.gg/74NAY53qH" target="_blank" class="btn btn-discord">
+                Discord Сервер
+            </a>
+        </div>
+    </section>
+
+    <!-- Сервер мүмкіндіктері -->
+    <section class="features" id="about">
+        <div class="card">
+            <h3>Уникалды Системдер</h3>
+            <p>Арнайы дайындалған жұмыстар, фракциялар және қызықты авто-жүйелер.</p>
+        </div>
+        <div class="card" id="connect">
+            <h3>Қалай қосылуға болады?</h3>
+            <p>MTA Client арқылы біздің серверге қосылып, ойыннан ләззат алыңыз.</p>
+        </div>
+        <div class="card">
+            <h3>Қауымдастық</h3>
+            <p>Біздің Telegram және Discord арналарымызға қосылып, жаңалықтардан хабардар болыңыз.</p>
+        </div>
+    </section>
+
+    <!-- Подвал -->
+    <footer>
+        &copy; 2026 PERFECT KAZAKHSTAN | RPG. Барлық құқықтар қорғалған.
+    </footer>
 
 </body>
 </html>
