@@ -6,9 +6,9 @@
     <title>Perfect Kazakhstan | RPG</title>
     <style>
         :root {
-            --primary: #2563eb; /* Көк түс */
+            --primary: #2563eb;
             --primary-hover: #1d4ed8;
-            --card-bg: rgba(18, 22, 32, 0.85); /* Фон көрініп тұру үшін шамалы мөлдір */
+            --card-bg: rgba(18, 22, 32, 0.85);
             --text: #ffffff;
             --text-dim: #94a3b8;
         }
@@ -20,6 +20,25 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
+        /* --- Скроллды жұқа және көк түске өзгерту --- */
+        ::-webkit-scrollbar {
+            width: 8px; /* Скроллдың енін кішкентай (жұқа) етеді */
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #050811; /* Артығының түсі */
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #2563eb; /* Скроллдың өзінің түсі (көк) */
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #1d4ed8; /* Тышқанды апарғандағы түсі */
+        }
+        /* ------------------------------------------- */
+
         body {
             background-color: #050811;
             color: var(--text);
@@ -30,7 +49,7 @@
             min-height: 100vh;
         }
 
-        /* --- Көк жұлдыздар ағып тұратн анимация фоны --- */
+        /* Ағып тұрған жұлдыздар фоны */
         .stars-bg {
             position: fixed;
             top: 0;
@@ -55,18 +74,13 @@
                 transform: translateY(-10vh) translateX(0);
                 opacity: 0;
             }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
             100% {
                 transform: translateY(110vh) translateX(-50px);
                 opacity: 0;
             }
         }
-        /* --------------------------------------------- */
 
         header {
             text-align: center;
@@ -139,7 +153,6 @@
             text-align: center;
         }
 
-        /* Сервер Әкімшілігі */
         .hierarchy-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -173,7 +186,6 @@
         .owner { border-color: #ef4444; }
         .owner .role-name { color: #ef4444; }
 
-        /* Тақталар мен Ақпарат */
         .info-card {
             background: var(--card-bg);
             backdrop-filter: blur(10px);
@@ -229,7 +241,6 @@
 </head>
 <body>
 
-    <!-- Ағып тұрған жұлдыздарға арналған блок -->
     <div class="stars-bg" id="starsContainer"></div>
 
     <header>
@@ -245,7 +256,6 @@
 
     <div class="container">
 
-        <!-- Сервер Басшылығы -->
         <div class="center-wrapper">
             <h2 class="section-title">Сервер Басшылығы</h2>
         </div>
@@ -277,7 +287,6 @@
             </div>
         </div>
 
-        <!-- Серверге қосылу IP -->
         <div class="center-wrapper">
             <h2 class="section-title">Серверге қосылу</h2>
         </div>
@@ -289,7 +298,6 @@
             </div>
         </div>
 
-        <!-- MTA жүктеу нұсқаулығы -->
         <div class="center-wrapper">
             <h2 class="section-title">Ойынды қалай жүктеуге болады?</h2>
         </div>
@@ -303,7 +311,6 @@
             </ol>
         </div>
 
-        <!-- Сервер туралы -->
         <div class="center-wrapper">
             <h2 class="section-title">Сервер туралы</h2>
         </div>
@@ -314,23 +321,21 @@
     </div>
 
     <script>
-        // Жұлдыздарды автоматты түрде генерациялау скрипті
         const starsContainer = document.getElementById('starsContainer');
-        const starsCount = 50; // Жұлдыздар саны
+        const starsCount = 50;
 
         for (let i = 0; i < starsCount; i++) {
             const star = document.createElement('div');
             star.classList.add('star');
             
-            // Кездейсоқ өлшем, орын және жылдамдық беру
-            const size = Math.random() * 3 + 1; // 1px - 4px аралығында
+            const size = Math.random() * 3 + 1;
             star.style.width = `${size}px`;
             star.style.height = `${size}px`;
             star.style.left = `${Math.random() * 100}vw`;
             star.style.top = `${Math.random() * -100}vh`;
             
-            const duration = Math.random() * 3 + 2; // 2 секундтан 5 секундқа дейін ағу жылдамдығы
-            const delay = Math.random() * 5; // Әр түрлі уақытта түсуі үшін кідіріс
+            const duration = Math.random() * 3 + 2;
+            const delay = Math.random() * 5;
             
             star.style.animationDuration = `${duration}s`;
             star.style.animationDelay = `${delay}s`;
