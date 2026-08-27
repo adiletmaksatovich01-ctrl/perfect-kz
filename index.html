@@ -20,24 +20,10 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        /* --- Скроллды жұқа және көк түске өзгерту --- */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #050811;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #2563eb;
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #1d4ed8;
-        }
-        /* ------------------------------------------- */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #050811; }
+        ::-webkit-scrollbar-thumb { background: #2563eb; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #1d4ed8; }
 
         body {
             background-color: #050811;
@@ -49,7 +35,7 @@
             min-height: 100vh;
         }
 
-        /* Ағып тұрған жұлдыздар фоны */
+        /* Жоғарыға қарай қалқып шығатын жұлдыздар фоны */
         .stars-bg {
             position: fixed;
             top: 0;
@@ -65,24 +51,17 @@
             position: absolute;
             background: #3b82f6;
             border-radius: 50%;
-            animation: fall linear infinite;
+            animation: floatUp linear infinite;
             box-shadow: 0 0 8px #3b82f6, 0 0 15px #60a5fa;
         }
 
-        @keyframes fall {
-            0% {
-                transform: translateY(-10vh) translateX(0);
-                opacity: 0;
-            }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% {
-                transform: translateY(110vh) translateX(-50px);
-                opacity: 0;
-            }
+        @keyframes floatUp {
+            0% { transform: translateY(110vh) translateX(0); opacity: 0; }
+            15% { opacity: 1; }
+            85% { opacity: 1; }
+            100% { transform: translateY(-10vh) translateX(30px); opacity: 0; }
         }
 
-        /* --- Басты беттің фонына сурет қою --- */
         header {
             text-align: center;
             padding: 50px 15px;
@@ -101,13 +80,10 @@
             text-shadow: 0 0 15px rgba(37, 99, 235, 0.7);
         }
 
-        header p {
-            font-size: 1rem;
-            color: var(--text-dim);
-        }
+        header p { font-size: 1rem; color: var(--text-dim); }
 
         .container {
-            max-width: 850px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 0 15px;
             position: relative;
@@ -136,10 +112,7 @@
         }
 
         .btn-tg { background: #24A1DE; }
-        .btn-tg:hover { background: #1b85b8; box-shadow: 0 4px 15px rgba(36, 161, 222, 0.5); }
-
         .btn-discord { background: #5865F2; }
-        .btn-discord:hover { background: #4752C4; box-shadow: 0 4px 15px rgba(88, 101, 242, 0.5); }
 
         .section-title {
             text-align: center;
@@ -151,10 +124,78 @@
             padding-bottom: 3px;
         }
 
-        .center-wrapper {
-            text-align: center;
+        .center-wrapper { text-align: center; }
+
+        /* Статистика блоктары */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 12px;
+            margin-top: 15px;
         }
 
+        .stat-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            padding: 15px 10px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .stat-card.clickable {
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .stat-card.clickable:hover {
+            border-color: #ef4444;
+            transform: translateY(-2px);
+        }
+
+        .stat-title {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .stat-value {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #ef4444;
+        }
+
+        /* Бандар тізімі модальды терезесі */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 100;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: #0f172a;
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%; max-width: 500px;
+            max-height: 80vh;
+            overflow-y: auto;
+            border: 1px solid #2563eb;
+        }
+        .modal-header {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 15px; border-bottom: 1px solid #1e293b; padding-bottom: 10px;
+        }
+        .close-btn { background: none; border: none; color: #fff; font-size: 1.2rem; cursor: pointer; }
+        .ban-item {
+            background: rgba(239, 68, 68, 0.1);
+            padding: 8px 12px; border-radius: 5px; margin-bottom: 8px;
+            border-left: 3px solid #ef4444; font-size: 0.9rem;
+        }
+
+        /* Сервер Басшылығы */
         .hierarchy-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -172,19 +213,8 @@
             border-left: 3px solid var(--primary);
         }
 
-        .role-title {
-            font-size: 0.8rem;
-            color: var(--text-dim);
-            text-transform: uppercase;
-        }
-
-        .role-name {
-            font-size: 1.1rem;
-            font-weight: bold;
-            color: #fff;
-            margin-top: 3px;
-        }
-
+        .role-title { font-size: 0.8rem; color: var(--text-dim); text-transform: uppercase; }
+        .role-name { font-size: 1.1rem; font-weight: bold; color: #fff; margin-top: 3px; }
         .owner { border-color: #ef4444; }
         .owner .role-name { color: #ef4444; }
 
@@ -212,33 +242,13 @@
             align-items: center;
             justify-content: center;
             gap: 12px;
-            flex-wrap: wrap;
             border: 1px solid rgba(37, 99, 235, 0.3);
         }
 
-        .btn-copy {
-            padding: 6px 14px;
-            font-size: 0.85rem;
-            margin: 0;
-        }
-
-        ol {
-            margin-left: 18px;
-        }
-
-        ol li {
-            margin-bottom: 6px;
-        }
-
-        .link-url {
-            color: #60a5fa;
-            text-decoration: underline;
-            word-break: break-all;
-        }
-
-        .link-url:hover {
-            color: #93c5fd;
-        }
+        .btn-copy { padding: 6px 14px; font-size: 0.85rem; margin: 0; }
+        ol { margin-left: 18px; }
+        ol li { margin-bottom: 6px; }
+        .link-url { color: #60a5fa; text-decoration: underline; }
     </style>
 </head>
 <body>
@@ -248,7 +258,6 @@
     <header>
         <h1>Perfect Kazakhstan | RPG</h1>
         <p>Қазақстандағы ең мықты және қызықты MTA RPG серверлерінің бірі!</p>
-        
         <div style="margin-top: 15px;">
             <a href="https://t.me/+8u15Xui4Va4wZjJi" target="_blank" class="btn btn-tg">Telegram Канал</a>
             <a href="https://t.me/PerfectRPG_bot" target="_blank" class="btn btn-tg">Telegram bot</a>
@@ -258,37 +267,47 @@
 
     <div class="container">
 
+        <!-- Сервер Статистикасы -->
         <div class="center-wrapper">
-            <h2 class="section-title">Сервер Басшылығы</h2>
+            <h2 class="section-title">Сервер Статистикасы</h2>
         </div>
-        
-        <div class="hierarchy-grid">
-            <div class="role-card owner">
-                <div class="role-title">Владелец</div>
-                <div class="role-name">BAURIGO</div>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-title">Онлайн</div>
+                <div class="stat-value" id="stat-online">0 / 0</div>
             </div>
-            <div class="role-card">
-                <div class="role-title">Руководство</div>
-                <div class="role-name">Ник / Аты</div>
+            <div class="stat-card">
+                <div class="stat-title">Барлық ойыншылар</div>
+                <div class="stat-value" id="stat-total">...</div>
             </div>
-            <div class="role-card">
-                <div class="role-title">Медиа Куратор</div>
-                <div class="role-name">Ник / Аты</div>
+            <div class="stat-card">
+                <div class="stat-title">Соңғы 7 күнде</div>
+                <div class="stat-value" id="stat-week">...</div>
             </div>
-            <div class="role-card">
-                <div class="role-title">Главный Смотрящий</div>
-                <div class="role-name">Ник / Аты</div>
+            <div class="stat-card">
+                <div class="stat-title">Бүгінгі ойыншылар</div>
+                <div class="stat-value" id="stat-today">...</div>
             </div>
-            <div class="role-card">
-                <div class="role-title">Старший Смотрящий</div>
-                <div class="role-name">Ник / Аты</div>
-            </div>
-            <div class="role-card">
-                <div class="role-title">Смотрящий</div>
-                <div class="role-name">Ник / Аты</div>
+            <div class="stat-card clickable" onclick="openBansModal()">
+                <div class="stat-title">Барлығы бан алған <span>📋</span></div>
+                <div class="stat-value" id="stat-banned">...</div>
             </div>
         </div>
 
+        <!-- Сервер Басшылығы -->
+        <div class="center-wrapper">
+            <h2 class="section-title">Сервер Басшылығы</h2>
+        </div>
+        <div class="hierarchy-grid">
+            <div class="role-card owner"><div class="role-title">Владелец</div><div class="role-name">BAURIGO</div></div>
+            <div class="role-card"><div class="role-title">Руководство</div><div class="role-name">Ник / Аты</div></div>
+            <div class="role-card"><div class="role-title">Медиа Куратор</div><div class="role-name">Ник / Аты</div></div>
+            <div class="role-card"><div class="role-title">Главный Админ</div><div class="role-name">Ник / Аты</div></div>
+            <div class="role-card"><div class="role-title">Старший Админ</div><div class="role-name">Ник / Аты</div></div>
+            <div class="role-card"><div class="role-title">Смотрящий</div><div class="role-name">Ник / Аты</div></div>
+        </div>
+
+        <!-- Серверге қосылу IP -->
         <div class="center-wrapper">
             <h2 class="section-title">Серверге қосылу</h2>
         </div>
@@ -300,65 +319,101 @@
             </div>
         </div>
 
+        <!-- MTA жүктеу нұсқаулығы -->
         <div class="center-wrapper">
             <h2 class="section-title">Ойынды қалай жүктеуге болады?</h2>
         </div>
         <div class="info-card">
             <ol>
-                <li>Компьютеріңізге таза <strong>GTA San Andreas</strong> ойынын орнатыңыз (<a href="https://disk.yandex.kz/d/ydf5ZKAhb8v4Gg" target="_blank" class="link-url">https://disk.yandex.kz/d/ydf5ZKAhb8v4Gg</a>)</li>
-                <li>Официалды сайттан <strong>Multi Theft Auto (MTA:SA)</strong> клиентін жүктеңіз (<a href="https://multitheftauto.com" target="_blank" class="link-url">https://multitheftauto.com</a>).</li>
+                <li>Компьютеріңізге таза <strong>GTA San Andreas</strong> ойынын орнатыңыз (<a href="https://disk.yandex.kz/d/ydf5ZKAhb8v4Gg" target="_blank" class="link-url">Сілтеме</a>)</li>
+                <li>Официалды сайттан <strong>Multi Theft Auto (MTA:SA)</strong> клиентін жүктеңіз (<a href="https://multitheftauto.com" target="_blank" class="link-url">multitheftauto.com</a>).</li>
                 <li>MTA орнату барысында GTA San Andreas папкасын көрсетіңіз.</li>
                 <li>МТА-ны ашып Настройка-Интерфейс бөліміне өтіп жазуды Руский дегенге ауыстырыңыз.</li>
-                <li>MTA-ны ашып, <strong>Список серверов</strong> бөлімін басып, төбеге осы IP-ді жазып, <strong>Подключиться</strong> батырмасын басып серверге кіресіз.</li>
+                <li>MTA-ны ашып, <strong>Список серверов</strong> бөлімін басып, төбеге осы IP-ді жазып, серверге кіресіз.</li>
             </ol>
-        </div>
-
-        <div class="center-wrapper">
-            <h2 class="section-title">Сервер туралы</h2>
-        </div>
-        <div class="info-card">
-            <p><strong>Perfect Kazakhstan | RPG</strong> — бұл бірегей автокөліктер, қазақстандық атмосфера, дамыған жұмыс жүйесі және шынайы RolePlay ортасы бар сервер. Өзіңізге ұнайтын жұмысқа орналасып, үй мен көлік сатып алыңыз, фракцияларға кіріңіз немесе өз бизнес империяңызды құрыңыз!</p>
         </div>
 
     </div>
 
-    <script>
-        const starsContainer = document.getElementById('starsContainer');
-        const starsCount = 50;
+    <!-- Бандар тізімі шығатын модальды терезе -->
+    <div class="modal" id="bansModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Бан алған ойыншылар тізімі</h3>
+                <button class="close-btn" onclick="closeBansModal()">✕</button>
+            </div>
+            <div id="bansListContainer">
+                <p style="text-align:center; color: var(--text-dim);">Жүктелуде...</p>
+            </div>
+        </div>
+    </div>
 
-        for (let i = 0; i < starsCount; i++) {
+    <script>
+        let cachedBans = [];
+
+        // Жұлдыздар санын көбейтіп (100 дана), жоғары қарай көтерілетін етіп жасау
+        const starsContainer = document.getElementById('starsContainer');
+        for (let i = 0; i < 100; i++) {
             const star = document.createElement('div');
             star.classList.add('star');
-            
-            const size = Math.random() * 3 + 1;
-            star.style.width = `${size}px`;
+            const size = Math.random() * 3 + 1; // Әртүрлі өлшем
+            star.style.width = `${size}px`; 
             star.style.height = `${size}px`;
             star.style.left = `${Math.random() * 100}vw`;
-            star.style.top = `${Math.random() * -100}vh`;
-            
-            const duration = Math.random() * 3 + 2;
-            const delay = Math.random() * 5;
-            
-            star.style.animationDuration = `${duration}s`;
-            star.style.animationDelay = `${delay}s`;
-            
+            star.style.top = `${Math.random() * 100}vh`;
+            star.style.animationDuration = `${Math.random() * 5 + 4}s`; // Жай немесе орташа жылдамдық (4-9 секунд)
+            star.style.animationDelay = `${Math.random() * 5}s`;
             starsContainer.appendChild(star);
         }
 
         function copyIP() {
             var ipText = document.getElementById("server-ip").innerText;
             var btn = document.getElementById("copy-btn");
-            
             navigator.clipboard.writeText(ipText).then(function() {
                 btn.innerText = "Скопировано!";
                 btn.style.background = "#22c55e";
-                setTimeout(function() {
-                    btn.innerText = "Копировать";
-                    btn.style.background = "var(--primary)";
-                }, 2000);
+                setTimeout(() => { btn.innerText = "Копировать"; btn.style.background = "var(--primary)"; }, 2000);
             });
         }
-    </script>
 
+        function openBansModal() {
+            document.getElementById('bansModal').style.display = 'flex';
+            let container = document.getElementById('bansListContainer');
+            container.innerHTML = '';
+            if (cachedBans.length === 0) {
+                container.innerHTML = '<p style="text-align:center; color: var(--text-dim);">Әзірге бан алғандар жоқ немесе сервер қосылмаған.</p>';
+                return;
+            }
+            cachedBans.forEach(ban => {
+                let div = document.createElement('div');
+                div.className = 'ban-item';
+                div.innerHTML = `<strong>${ban.name}</strong><br><span style="font-size:0.8rem; color:#94a3b8;">Себебі: ${ban.reason} | Уақыты: ${ban.time}</span>`;
+                container.appendChild(div);
+            });
+        }
+
+        function closeBansModal() {
+            document.getElementById('bansModal').style.display = 'none';
+        }
+
+        function fetchServerStats() {
+            fetch('http://87.228.5.7:24005/stats.json')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('stat-online').innerText = `${data.online} / ${data.maxPlayers}`;
+                    document.getElementById('stat-total').innerText = data.totalPlayers;
+                    document.getElementById('stat-today').innerText = data.playersToday;
+                    document.getElementById('stat-week').innerText = data.players7Days;
+                    document.getElementById('stat-banned').innerText = data.totalBanned;
+                    cachedBans = data.bans || [];
+                })
+                .catch(error => {
+                    console.log('Сервер әзірге жауап бермеді...');
+                });
+        }
+        
+        fetchServerStats();
+        setInterval(fetchServerStats, 30000);
+    </script>
 </body>
 </html>
