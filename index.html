@@ -6,11 +6,12 @@
     <title>Perfect Kazakhstan | RPG</title>
     <style>
         :root {
-            --primary: #e67e22;
-            --bg-dark: #0f1015;
-            --card-bg: #1a1c23;
+            --primary: #2563eb; /* Көк түс */
+            --primary-hover: #1d4ed8;
+            --bg-dark: #0a0c10;
+            --card-bg: #121620;
             --text: #ffffff;
-            --text-dim: #a0a5b5;
+            --text-dim: #94a3b8;
         }
 
         * {
@@ -23,137 +24,147 @@
         body {
             background-color: var(--bg-dark);
             color: var(--text);
-            line-height: 1.6;
-            padding-bottom: 50px;
+            line-height: 1.5;
+            padding-bottom: 30px;
         }
 
         header {
             text-align: center;
-            padding: 60px 20px;
-            background: linear-gradient(180deg, rgba(230,126,34,0.2) 0%, rgba(15,16,21,1) 100%);
+            padding: 35px 15px;
+            background: linear-gradient(180deg, rgba(37,99,235,0.15) 0%, rgba(10,12,16,1) 100%);
         }
 
         h1 {
-            font-size: 2.8rem;
+            font-size: 2.2rem;
             color: var(--primary);
             text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        header p {
+            font-size: 0.95rem;
+            color: var(--text-dim);
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 850px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 15px;
         }
 
         .btn {
             display: inline-block;
-            padding: 12px 30px;
+            padding: 10px 20px;
             background: var(--primary);
             color: #fff;
             text-decoration: none;
             font-weight: bold;
-            border-radius: 6px;
+            font-size: 0.9rem;
+            border-radius: 5px;
             transition: 0.3s;
-            margin: 10px 5px;
+            margin: 6px 4px;
             border: none;
             cursor: pointer;
         }
 
         .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(230, 126, 34, 0.4);
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
         }
 
         .btn-tg { background: #24A1DE; }
-        .btn-tg:hover { box-shadow: 0 5px 15px rgba(36, 161, 222, 0.4); }
+        .btn-tg:hover { background: #1b85b8; box-shadow: 0 4px 12px rgba(36, 161, 222, 0.3); }
+
+        .btn-discord { background: #5865F2; }
+        .btn-discord:hover { background: #4752C4; box-shadow: 0 4px 12px rgba(88, 101, 242, 0.3); }
 
         .section-title {
             text-align: center;
-            margin: 40px 0 20px;
-            font-size: 1.8rem;
+            margin: 25px 0 15px;
+            font-size: 1.4rem;
             border-bottom: 2px solid var(--primary);
             display: inline-block;
-            padding-bottom: 5px;
+            padding-bottom: 3px;
         }
 
         .center-wrapper {
             text-align: center;
         }
 
-        /* Сервер Әкімшілігі / С құрамы */
+        /* Сервер Әкімшілігі */
         .hierarchy-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
         }
 
         .role-card {
             background: var(--card-bg);
-            padding: 20px;
-            border-radius: 8px;
+            padding: 12px 15px;
+            border-radius: 6px;
             text-align: center;
-            border-left: 4px solid var(--primary);
+            border-left: 3px solid var(--primary);
         }
 
         .role-title {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             color: var(--text-dim);
             text-transform: uppercase;
         }
 
         .role-name {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             font-weight: bold;
             color: #fff;
-            margin-top: 5px;
+            margin-top: 3px;
         }
 
-        .owner { border-color: #ff4757; }
-        .owner .role-name { color: #ff4757; }
+        .owner { border-color: #ef4444; }
+        .owner .role-name { color: #ef4444; }
 
         /* Тақталар мен Ақпарат */
         .info-card {
             background: var(--card-bg);
-            padding: 25px;
-            border-radius: 8px;
-            margin-bottom: 20px;
+            padding: 18px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
         }
 
         .ip-box {
-            background: #111217;
-            padding: 15px;
-            border-radius: 6px;
+            background: #07090c;
+            padding: 12px;
+            border-radius: 5px;
             font-family: monospace;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             text-align: center;
             color: var(--primary);
             user-select: all;
-            margin: 15px 0;
+            margin: 10px 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 15px;
+            gap: 12px;
             flex-wrap: wrap;
         }
 
         .btn-copy {
-            padding: 8px 18px;
-            font-size: 0.9rem;
+            padding: 6px 14px;
+            font-size: 0.85rem;
             margin: 0;
         }
 
         ol {
-            margin-left: 20px;
+            margin-left: 18px;
         }
 
         ol li {
-            margin-bottom: 10px;
+            margin-bottom: 6px;
         }
 
-        /* Беттегі белсенді сілтемелер стилі */
         .link-url {
             color: var(--primary);
             text-decoration: underline;
@@ -161,7 +172,7 @@
         }
 
         .link-url:hover {
-            color: #f39c12;
+            color: #60a5fa;
         }
     </style>
 </head>
@@ -171,15 +182,16 @@
         <h1>Perfect Kazakhstan | RPG</h1>
         <p>Қазақстандағы ең мықты және қызықты MTA RPG серверлерінің бірі!</p>
         
-        <div style="margin-top: 20px;">
+        <div style="margin-top: 15px;">
             <a href="https://t.me/+8u15Xui4Va4wZjJi" target="_blank" class="btn btn-tg">Telegram Канал</a>
             <a href="https://t.me/PerfectRPG_bot" target="_blank" class="btn btn-tg">Telegram bot</a>
+            <a href="https://discord.gg/74NAY53qH" target="_blank" class="btn btn-discord">Discord Сервер</a>
         </div>
     </header>
 
     <div class="container">
 
-        <!-- Сервер Кураторлары мен Әкімшілігі -->
+        <!-- Сервер Басшылығы -->
         <div class="center-wrapper">
             <h2 class="section-title">Сервер Басшылығы</h2>
         </div>
@@ -213,7 +225,7 @@
 
         <!-- Серверге қосылу IP -->
         <div class="center-wrapper">
-            <h2 class="section-title">Серверке қосылу</h2>
+            <h2 class="section-title">Серверге қосылу</h2>
         </div>
         <div class="info-card">
             <p style="text-align: center;">МТА клиентін ашып, келесі IP мекенжайды енгізіңіз:</p>
@@ -242,7 +254,7 @@
             <h2 class="section-title">Сервер туралы</h2>
         </div>
         <div class="info-card">
-            <p><strong>Perfect Kazakhstan | RPG</strong> — бұл бірегей автокөліктер, қазақстандық атмосфера, дамыған жұмыс жүйесі және шынайы RolePlay ортасы бар сервер. Өзіңізге ұнайтын жумысқа орналасып, үй мен көлік сатып алыңыз, фракцияларға кіріңіз немесе өз бизнес империяңызды құрыңыз!</p>
+            <p><strong>Perfect Kazakhstan | RPG</strong> — бұл бірегей автокөліктер, қазақстандық атмосфера, дамыған жұмыс жүйесі және шынайы RolePlay ортасы бар сервер. Өзіңізге ұнайтын жұмысқа орналасып, үй мен көлік сатып алыңыз, фракцияларға кіріңіз немесе өз бизнес империяңызды құрыңыз!</p>
         </div>
 
     </div>
@@ -254,7 +266,7 @@
             
             navigator.clipboard.writeText(ipText).then(function() {
                 btn.innerText = "Скопировано!";
-                btn.style.background = "#2ed573";
+                btn.style.background = "#22c55e";
                 setTimeout(function() {
                     btn.innerText = "Копировать";
                     btn.style.background = "var(--primary)";
